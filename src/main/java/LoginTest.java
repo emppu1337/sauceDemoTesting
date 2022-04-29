@@ -1,12 +1,16 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
+import java.util.function.Function;
 
 public class LoginTest {
 
@@ -26,46 +30,48 @@ public class LoginTest {
 
     @AfterMethod
     public void quitWebDriver() {
-        if(driver != null) {
+        if (driver != null) {
             driver.quit();
         }
     }
 
-    @Test (priority = 1)
+    @Test(priority = 1)
     public void standardUser() {
         String userName = "standard_user";
         String password = "secret_sauce";
-        login(userName,password);
+        login(userName, password);
     }
 
-    @Test (priority = 2)
+    @Test(priority = 2)
     public void lockedUser() {
         String userName = "locked_out_user";
         String password = "secret_sauce";
-        login(userName,password);
+        login(userName, password);
     }
 
-    @Test (priority = 3)
+    @Test(priority = 3)
     public void problemUser() {
         String userName = "problem_user";
         String password = "secret_sauce";
-        login(userName,password);
+        login(userName, password);
     }
 
-    @Test (priority = 4)
+    @Test(priority = 4)
     public void performanceGlitchUser() {
         String userName = "performance_glitch_user";
         String password = "secret_sauce";
-        login(userName,password);
+        login(userName, password);
     }
 
-    public void login(String username,String password) {
+    public void login(String username, String password) {
         try {
             driver.get(BASE_URL);
             driver.findElement(By.xpath("//*[@id=\"user-name\"]")).sendKeys(username);
             driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys(password);
             driver.findElement(By.xpath("//*[@id=\"login-button\"]")).click();
-            Thread.sleep(2000);
+            while (!(((JavascriptExecutor) driver).executeScript("return document.readystate").equals("complete"))) {
+                driver.wait();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
