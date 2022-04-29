@@ -12,6 +12,8 @@ import java.time.Duration;
 
 public class LoginTest {
 
+    // TODO: 4/29/2022 Add more better assertions
+    // TODO: 4/29/2022 Current JS script that forces to wait for page to load can't really handle exceptions, do something or make better
     // TODO: 4/29/2022 Learn how to run test on Edge, Firefox and Chrome parallel
     // TODO: 4/29/2022 Learn how to implement parameters with testng.xml
 
