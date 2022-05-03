@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class NotAccessibleWithLockedAccount {
+public class LockedAccountLoginTest {
 
     String BASE_URL = "https://www.saucedemo.com/";
     ChromeDriver driver;
