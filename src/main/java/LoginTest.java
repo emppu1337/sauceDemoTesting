@@ -18,12 +18,12 @@ public class LoginTest {
     // TODO: 4/29/2022 Learn how to implement parameters with testng.xml
 
     String BASE_URL = "https://www.saucedemo.com/";
-    WebDriver driver;
+    ChromeDriver driver;
 
     @BeforeMethod
     public void setupWebDriver() {
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        this.driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
     }
 
@@ -38,20 +38,13 @@ public class LoginTest {
     public void standardUser() {
         String userName = "standard_user";
         String password = "secret_sauce";
-        login(userName, password);
-        Assert.assertEquals(driver.getCurrentUrl()
-                ,("https://www.saucedemo.com/inventory.html")
-                ,"login must work with valid credentials");
-    }
+        System.out.println(driver.manage().getCookies());
 
-    @Test(priority = 2)
-    public void lockedUser() {
-        String userName = "locked_out_user";
-        String password = "secret_sauce";
         login(userName, password);
-        Assert.assertNotEquals(driver.getCurrentUrl()
-                ,("https://www.saucedemo.com/inventory.html")
-                ,"login must not work with locked user");
+        Assert.assertEquals("https://www.saucedemo.com/inventory.html"
+                ,driver.getCurrentUrl()
+                ,"login must work with valid credentials");
+        System.out.println(driver.manage().getCookies());
     }
 
     @Test(priority = 3)
@@ -59,18 +52,18 @@ public class LoginTest {
         String userName = "problem_user";
         String password = "secret_sauce";
         login(userName, password);
-        Assert.assertEquals(driver.getCurrentUrl()
-                ,("https://www.saucedemo.com/inventory.html")
+        Assert.assertEquals("https://www.saucedemo.com/inventory.html"
+                ,driver.getCurrentUrl()
                 ,"login must work with valid credentials");
     }
 
-    @Test(priority = 4)
+    @Test(priority = 3)
     public void performanceGlitchUser() {
         String userName = "performance_glitch_user";
         String password = "secret_sauce";
         login(userName, password);
-        Assert.assertEquals(driver.getCurrentUrl()
-                ,("https://www.saucedemo.com/inventory.html")
+        Assert.assertEquals("https://www.saucedemo.com/inventory.html"
+                ,driver.getCurrentUrl()
                 ,"login must work with valid credentials");
     }
 
@@ -80,11 +73,36 @@ public class LoginTest {
             driver.findElement(By.xpath("//*[@id=\"user-name\"]")).sendKeys(username);
             driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys(password);
             driver.findElement(By.xpath("//*[@id=\"login-button\"]")).click();
-            while (!(((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete"))) {
+            while (!("complete".equals(((JavascriptExecutor) driver).executeScript("return document.readyState")))) {
                 driver.wait();
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+    @Test
+    public void testiTest() throws InterruptedException {
+        String userName = "problem_user";
+        String password = "secret_sauce";
+        login(userName, password);
+        Thread.sleep(2500);
+        System.out.println(driver.manage().getCookies());
+        String userName2 = "standard_user";
+        String password2 = "secret_sauce";
+        login(userName2, password2);
+        Thread.sleep(2500);
+
+    }
 }
+
+/*Comparing Strings With Constant Values
+
+When comparing a String to a constant value, you can put the constant value on the left side of equals to ensure that you won’t get a NullPointerException if the other String is null.
+For example:
+
+"baz".equals(foo)
+While foo.equals("baz") will throw a NullPointerException if foo is null, "baz".equals(foo) will evaluate to false.
+
+A more readable alternative is to use Objects.equals(), which does a null check on both parameters:
+e.g. Objects.equals(foo, "baz").
+ */
