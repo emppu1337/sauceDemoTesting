@@ -80,19 +80,6 @@ public class LoginTest {
             e.printStackTrace();
         }
     }
-    @Test
-    public void testiTest() throws InterruptedException {
-        String userName = "problem_user";
-        String password = "secret_sauce";
-        login(userName, password);
-        Thread.sleep(2500);
-        System.out.println(driver.manage().getCookies());
-        String userName2 = "standard_user";
-        String password2 = "secret_sauce";
-        login(userName2, password2);
-        Thread.sleep(2500);
-
-    }
 }
 
 /*Comparing Strings With Constant Values
