@@ -1,7 +1,10 @@
+package sauceDemo.testCases;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -23,7 +26,7 @@ public class LoginTest {
     public void setupWebDriver() {
         WebDriverManager.chromedriver().setup();
         this.driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
     }
 
     @AfterMethod
@@ -33,20 +36,18 @@ public class LoginTest {
         }
     }
 
-    @Test(priority = 1)
+    @Test
     public void standardUser() {
         String userName = "standard_user";
         String password = "secret_sauce";
-        System.out.println(driver.manage().getCookies());
 
         login(userName, password);
         Assert.assertEquals("https://www.saucedemo.com/inventory.html"
                 ,driver.getCurrentUrl()
                 ,"login must work with valid credentials");
-        System.out.println(driver.manage().getCookies());
     }
 
-    @Test(priority = 3)
+    @Test
     public void problemUser() {
         String userName = "problem_user";
         String password = "secret_sauce";
@@ -56,13 +57,13 @@ public class LoginTest {
                 ,"login must work with valid credentials");
     }
 
-    @Test(priority = 3)
+    @Test
     public void performanceGlitchUser() {
         String userName = "performance_glitch_user";
         String password = "secret_sauce";
         login(userName, password);
-        Assert.assertEquals("https://www.saucedemo.com/inventory.html"
-                ,driver.getCurrentUrl()
+        Assert.assertEquals(driver.getCurrentUrl()
+                ,"https://www.saucedemo.com/inventory.html"
                 ,"login must work with valid credentials");
     }
 
@@ -72,15 +73,14 @@ public class LoginTest {
             driver.findElement(By.xpath("//*[@id=\"user-name\"]")).sendKeys(username);
             driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys(password);
             driver.findElement(By.xpath("//*[@id=\"login-button\"]")).click();
-            while (!("complete".equals(((JavascriptExecutor) driver).executeScript("return document.readyState")))) {
-                driver.wait();
-            }
+//            while (!("complete".equals(((JavascriptExecutor) driver).executeScript("return document.readyState")))) {
+  //              driver.wait();
+    //        }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 }
-
 /*Comparing Strings With Constant Values
 
 When comparing a String to a constant value, you can put the constant value on the left side of equals to ensure that you won’t get a NullPointerException if the other String is null.
