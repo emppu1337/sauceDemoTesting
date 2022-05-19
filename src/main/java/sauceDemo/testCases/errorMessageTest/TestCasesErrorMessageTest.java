@@ -1,48 +1,22 @@
-package sauceDemo.testCases;
+package sauceDemo.testCases.errorMessageTest;
 
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
 import sauceDemo.pages.LoginPage;
-import sauceDemo.utilities.WebDriverSetups;
 
-public class ErrorMessageTest {
+public class TestCasesErrorMessageTest {
 
-    /*  Class asserts that
-        - error message is not visible when error has not occurred
-        - correct error message is shown according to error in login attempt
-        - error messages can be successfully closed with error message button
-    */
-
-    ChromeDriver driver;
     LoginPage loginpage;
     private String expectedErrorMessage;
 
-    @BeforeClass
-    public WebDriverSetups driver() {
-        this.driver = (ChromeDriver) WebDriverSetups.chromeDriverSetup(driver);
-        return null;
-    }
-
-    @AfterClass
-    public void tearDown() {
-        try {
-            driver.quit();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Test
-    public void noErrorMessageWithoutError() { // Assert that no error message is visible before login attempt
+    //  Assert that no error message is visible before login attempt
+    public void noErrorMessageWithoutError(WebDriver driver) {
         this.loginpage = LoginPage.visitPage(driver);
         assertErrorMessageNotVisible();
     }
 
-    @Test
-    public void lockedUser() { // Assert that correct error message is visible after login attempt
+    // Assert that correct error message is visible after failed login attempt
+    public void lockedUser(WebDriver driver) {
         this.expectedErrorMessage = "Epic sadface: Sorry, this user has been locked out.";
         this.loginpage = LoginPage.visitPage(driver);
         assertErrorMessageNotVisible();
@@ -53,8 +27,8 @@ public class ErrorMessageTest {
         assertErrorMessageNotVisible();
     }
 
-    @Test
-    public void missingUsername() { // Assert that correct error message is visible after login attempt
+    // Assert that correct error message is visible after failed login attempt
+    public void missingUsername(WebDriver driver) {
         this.expectedErrorMessage = "Epic sadface: Username is required";
         this.loginpage = LoginPage.visitPage(driver);
         assertErrorMessageNotVisible();
@@ -65,8 +39,8 @@ public class ErrorMessageTest {
         assertErrorMessageNotVisible();
     }
 
-    @Test
-    public void missingPassword() { // Assert that correct error message is visible after login attempt
+    // Assert that correct error message is visible after failed login attempt
+    public void missingPassword(WebDriver driver) {
         this.expectedErrorMessage = "Epic sadface: Password is required";
         this.loginpage = LoginPage.visitPage(driver);
         assertErrorMessageNotVisible();
@@ -77,8 +51,8 @@ public class ErrorMessageTest {
         assertErrorMessageNotVisible();
     }
 
-    @Test
-    public void missingCredentials() { // Assert that correct error message is visible after login attempt
+    // Assert that correct error message is visible after failed login attempt
+    public void missingCredentials(WebDriver driver) {
         this.expectedErrorMessage = "Epic sadface: Username is required";
         this.loginpage = LoginPage.visitPage(driver);
         assertErrorMessageNotVisible();
@@ -89,8 +63,8 @@ public class ErrorMessageTest {
         assertErrorMessageNotVisible();
     }
 
-    @Test
-    public void invalidUsername() { // Assert that correct error message is visible after login attempt
+    // Assert that correct error message is visible after failed login attempt
+    public void invalidUsername(WebDriver driver) {
         this.expectedErrorMessage = "Epic sadface: Username and password do not match any user in this service";
         this.loginpage = LoginPage.visitPage(driver);
         assertErrorMessageNotVisible();
@@ -101,8 +75,8 @@ public class ErrorMessageTest {
         assertErrorMessageNotVisible();
     }
 
-    @Test
-    public void invalidPassword() { // Assert that correct error message is visible after login attempt
+    // Assert that correct error message is visible after failed login attempt
+    public void invalidPassword(WebDriver driver) {
         this.expectedErrorMessage = "Epic sadface: Username and password do not match any user in this service";
         this.loginpage = LoginPage.visitPage(driver);
         assertErrorMessageNotVisible();

@@ -1,7 +1,7 @@
 package sauceDemo.pages;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -17,7 +17,7 @@ public class LoginPage {
     private final String invalidUsername = "invalid_username";
     private final String invalidPassword = "invalid_password";
 
-    public ChromeDriver driver;
+    public WebDriver driver;
 
     // Use @FindBy annotations to locate necessary elements on the page
     @FindBy (id = "user-name")
@@ -37,12 +37,12 @@ public class LoginPage {
 
     // Page needs a WebDriver to find elements -> constructor is needed
     // initElements initializes elements on page
-    public LoginPage(ChromeDriver driver) {
+    public LoginPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver,this);
     }
 
-    public static LoginPage visitPage(ChromeDriver driver) {
+    public static LoginPage visitPage(WebDriver driver) {
         LoginPage page = new LoginPage(driver);
         page.getPage();
         return page;
