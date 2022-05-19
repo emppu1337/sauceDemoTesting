@@ -1,4 +1,4 @@
-package sauceDemo.testCases;
+package sauceDemo.testCases.loginTest;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
