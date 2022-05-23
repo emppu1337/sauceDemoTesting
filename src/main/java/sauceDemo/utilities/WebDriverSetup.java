@@ -9,19 +9,23 @@ import java.time.Duration;
 
 public class WebDriverSetup {
 
-    public static ChromeDriver chromeDriverSetup(int maxTimeOut) {
+    private final int maxTimeOut = 10;
+
+    public ChromeDriver chromeSetup() {
         WebDriverManager.chromedriver().setup();
         ChromeDriver driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(maxTimeOut));
         return driver;
     }
-    public static EdgeDriver edgeSetup(int maxTimeOut) {
+
+    public EdgeDriver edgeSetup() {
         WebDriverManager.edgedriver().setup();
         EdgeDriver driver = new EdgeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(maxTimeOut));
         return driver;
     }
-    public static FirefoxDriver firefoxSetup(int maxTimeOut) {
+
+    public FirefoxDriver firefoxSetup() {
         WebDriverManager.firefoxdriver().setup();
         FirefoxDriver driver = new FirefoxDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(maxTimeOut));

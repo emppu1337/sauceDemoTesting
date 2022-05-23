@@ -10,10 +10,12 @@ import sauceDemo.utilities.WebDriverSetup;
 public class ChromeErrorMessageTest {
     ChromeDriver driver;
     TestCasesErrorMessageTest testExecution;
+    WebDriverSetup setup;
 
     @BeforeClass
     public void setup() {
-        this.driver= WebDriverSetup.chromeDriverSetup(10);
+        this.setup = new WebDriverSetup();
+        this.driver = setup.chromeSetup();
         this.testExecution = new TestCasesErrorMessageTest();
     }
     @AfterClass
@@ -48,4 +50,4 @@ public class ChromeErrorMessageTest {
     public void missingPassword() {
         testExecution.missingPassword(driver);
     }
-}
+    }

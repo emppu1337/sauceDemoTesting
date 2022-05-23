@@ -10,10 +10,12 @@ import sauceDemo.utilities.WebDriverSetup;
 public class FirefoxErrorMessageTest {
     FirefoxDriver driver;
     TestCasesErrorMessageTest testExecution;
+    WebDriverSetup setup;
 
     @BeforeClass
     public void setup() {
-        this.driver= WebDriverSetup.firefoxSetup(10);
+        this.setup = new WebDriverSetup();
+        this.driver= setup.firefoxSetup();
         this.testExecution = new TestCasesErrorMessageTest();
     }
     @AfterClass

@@ -10,10 +10,12 @@ import sauceDemo.utilities.WebDriverSetup;
 public class EdgeErrorMessageTest {
     EdgeDriver driver;
     TestCasesErrorMessageTest testExecution;
+    WebDriverSetup setup;
 
     @BeforeClass
     public void setup() {
-        this.driver= WebDriverSetup.edgeSetup(10);
+        this.setup = new WebDriverSetup();
+        this.driver= setup.edgeSetup();
         this.testExecution = new TestCasesErrorMessageTest();
     }
     @AfterClass
