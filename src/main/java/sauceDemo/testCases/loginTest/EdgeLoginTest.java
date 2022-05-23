@@ -1,19 +1,17 @@
 package sauceDemo.testCases.loginTest;
 
-import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import sauceDemo.pages.LoginPage;
 import sauceDemo.utilities.TearDown;
 import sauceDemo.utilities.WebDriverSetup;
 
 public class EdgeLoginTest {
 
-    EdgeDriver driver;
+    WebDriver driver;
     TestCasesLoginTest testExecution;
-    LoginPage loginPage;
     WebDriverSetup setup;
 
     @BeforeClass
@@ -21,7 +19,6 @@ public class EdgeLoginTest {
         this.setup = new WebDriverSetup();
         this.driver = setup.edgeSetup();
         this.testExecution = new TestCasesLoginTest();
-        this.loginPage = new LoginPage(driver);
     }
 
     @AfterClass

@@ -1,6 +1,6 @@
 package sauceDemo.testCases.errorMessageTest;
 
-import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -8,7 +8,7 @@ import sauceDemo.utilities.TearDown;
 import sauceDemo.utilities.WebDriverSetup;
 
 public class EdgeErrorMessageTest {
-    EdgeDriver driver;
+    WebDriver driver;
     TestCasesErrorMessageTest testExecution;
     WebDriverSetup setup;
 

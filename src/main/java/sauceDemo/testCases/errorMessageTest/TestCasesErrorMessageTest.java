@@ -1,6 +1,5 @@
 package sauceDemo.testCases.errorMessageTest;
 
-import com.beust.jcommander.Parameter;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Parameters;

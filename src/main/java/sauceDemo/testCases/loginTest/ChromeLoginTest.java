@@ -1,6 +1,6 @@
 package sauceDemo.testCases.loginTest;
 
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -10,7 +10,7 @@ import sauceDemo.utilities.WebDriverSetup;
 
 public class ChromeLoginTest {
 
-    ChromeDriver driver;
+    WebDriver driver;
     TestCasesLoginTest testExecution;
     WebDriverSetup setup;
 
