@@ -2,23 +2,12 @@ package sauceDemo.testCases.errorMessageTest;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
 import sauceDemo.pages.LoginPage;
 
 public class TestCasesErrorMessageTest {
 
     LoginPage loginpage;
     private String expectedErrorMessage;
-
-    @Test
-    @Parameters ({
-            "standardUser",
-            "lockedOutUser",
-            "validPassword",
-            "invalidUser",
-            "invalidPassword"
-    })
 
     //  Assert that no error message is visible before login attempt
     public void noErrorMessageWithoutError(WebDriver driver) {

@@ -7,15 +7,8 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage {
 
-    public static final String url = "https://www.saucedemo.com";
-
-    private final String standardUsername = "standard_user";
-    private final String lockedUsername = "locked_out_user";
-    private final String problemUsername = "problem_user";
-    private final String performanceGlitchUsername = "performance_glitch_user";
-    private final String validPassword = "secret_sauce";
-    private final String invalidUsername = "invalid_username";
-    private final String invalidPassword = "invalid_password";
+    public static final String url = "https://www.saucedemo.com/";
+    public static final String loginCookieName = "session-username";
 
     public WebDriver driver;
 
@@ -59,46 +52,52 @@ public class LoginPage {
         inputPassword.sendKeys(password);
         clickLoginButton();
     }
+
+    public InventoryPage getInventoryPage(String username, String password) {
+        login(username, password);
+        return PageFactory.initElements(driver, InventoryPage.class);
+    }
+
     public void clickLoginButton() {
         loginButton.click();
     }
+
     public void clickErrorButton() {
         errorButton.click();
     }
 
     public String getErrorMessage() {
-        String errorMessage = errorMessageContainer.getText();
-        return errorMessage;
+        return errorMessageContainer.getText();
     }
     public boolean errorMessageContainerVisibility() {
         return errorMessageContainer.getAttribute("class").contains(" error");
     }
 
     public String getStandardUsername() {
-        return standardUsername;
+        return "standard_user";
     }
 
     public String getLockedUsername() {
-        return lockedUsername;
+        return "locked_out_user";
     }
 
     public String getProblemUsername() {
-        return problemUsername;
+        return "problem_user";
     }
 
     public String getPerformanceGlitchUsername() {
-        return performanceGlitchUsername;
+        return "performance_glitch_user";
     }
 
     public String getValidPassword() {
-        return validPassword;
+        return "secret_sauce";
     }
 
     public String getInvalidUsername() {
-        return invalidUsername;
+        return "invalid_username";
     }
 
     public String getInvalidPassword() {
-        return invalidPassword;
+        return "invalid_password";
     }
 }

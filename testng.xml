@@ -2,12 +2,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="sauceDemo">
 
-    <parameter name="standardUser" value="standard_user"/>
-    <parameter name="lockedOutUser" value="locked_out_user"/>
-    <parameter name="validPassword" value="secret_sauce"/>
-    <parameter name="invalidUser" value="user_does_not_exist"/>
-    <parameter name="invalidPassword" value="this_password_is_invalid"/>
-
     <test thread-count="3" name="errorMessageTest">
         <classes>
             <class name="sauceDemo.testCases.errorMessageTest.ChromeErrorMessageTest"/>
@@ -15,11 +9,20 @@
             <class name="sauceDemo.testCases.errorMessageTest.FirefoxErrorMessageTest"/>
         </classes>
     </test>
+
     <test thread-count="3" name="loginTest">
         <classes>
             <class name="sauceDemo.testCases.loginTest.ChromeLoginTest"/>
             <class name="sauceDemo.testCases.loginTest.EdgeLoginTest"/>
             <class name="sauceDemo.testCases.loginTest.FirefoxLoginTest"/>
+        </classes>
+    </test>
+
+    <test thread-count="3" name="logoutTest">
+        <classes>
+            <class name="sauceDemo.testCases.logoutTest.ChromeLogoutTest"/>
+            <class name="sauceDemo.testCases.logoutTest.FirefoxLogoutTest"/>
+            <class name="sauceDemo.testCases.logoutTest.EdgeLogoutTest"/>
         </classes>
     </test>
 </suite>
