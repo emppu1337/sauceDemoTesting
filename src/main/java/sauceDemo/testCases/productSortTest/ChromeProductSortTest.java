@@ -24,19 +24,11 @@ public class ChromeProductSortTest {
     }
 
     @Test
-    public void mustSortByPriceHiLo() {
-        testExecution.mustSortByPriceHiLo(driver);
-    }
-    @Test
-    public void mustSortByPriceLoHi() {
-        testExecution.mustSortByPriceLoHi(driver);
+    public void mustSortByNameAtoZ() {
+        testExecution.assertSortingAToZ(driver);
     }
     @Test
     public void mustSortByNameZtoA() {
-        testExecution.mustSortByNameAtoZ(driver);
-    }
-    @Test
-    public void mustSortByNameAtoZ() {
-        testExecution.mustSortByNameZtoA(driver);
+        testExecution.assertSortingZToA(driver);
     }
 }

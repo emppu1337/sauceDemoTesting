@@ -3,6 +3,7 @@ package sauceDemo.testCases.productSortTest;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 import sauceDemo.utilities.TearDown;
 import sauceDemo.utilities.WebDriverSetup;
 
@@ -21,5 +22,15 @@ public class FirefoxProductSortTest {
     public void tearDown() {
         TearDown.tearDown(driver);
     }
+
+    @Test
+    public void mustSortByNameAtoZ() {
+        testExecution.assertSortingAToZ(driver);
+    }
+    @Test
+    public void mustSortByNameZtoA() {
+        testExecution.assertSortingZToA(driver);
+    }
+
 
 }

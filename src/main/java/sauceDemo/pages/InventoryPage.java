@@ -1,10 +1,15 @@
 package sauceDemo.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class InventoryPage {
 
@@ -13,6 +18,7 @@ public class InventoryPage {
     LoginPage loginPage;
     InventoryPage inventoryPage;
     Select select;
+    List<WebElement> inventoryItems;
 
     @FindBy (id = "react-burger-menu-btn")
     WebElement menuButton;
@@ -34,6 +40,9 @@ public class InventoryPage {
 
     @FindBy (xpath = "/html/body/div/div/div/div[1]/div[2]/div[2]/span/select")
     WebElement productSortContainer;
+
+    @FindBy (id = "inventory_container")
+    WebElement inventoryContainer;
 
     public InventoryPage(WebDriver driver) {
         this.driver = driver;
@@ -83,5 +92,14 @@ public class InventoryPage {
     public void sortNameZToA() {
         this.select = new Select(productSortContainer);
         select.selectByVisibleText("Name (Z to A)");
+    }
+
+    public List<String> productNames() {
+        List<String> names = new LinkedList<>();
+        List<WebElement> products = inventoryContainer.findElements(By.className("inventory_item"));
+        for (WebElement product : products) {
+            names.add(product.findElement(By.className("inventory_item_name")).getText());
+        }
+        return names;
     }
 }
