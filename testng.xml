@@ -3,26 +3,27 @@
 <suite name="sauceDemo">
 
     <test thread-count="3" name="errorMessageTest">
-        <classes>
-            <class name="sauceDemo.testCases.errorMessageTest.ChromeErrorMessageTest"/>
-            <class name="sauceDemo.testCases.errorMessageTest.EdgeErrorMessageTest"/>
-            <class name="sauceDemo.testCases.errorMessageTest.FirefoxErrorMessageTest"/>
-        </classes>
+        <packages>
+            <package name="sauceDemo.testCases.errorMessageTest"></package>
+        </packages>
     </test>
 
     <test thread-count="3" name="loginTest">
-        <classes>
-            <class name="sauceDemo.testCases.loginTest.ChromeLoginTest"/>
-            <class name="sauceDemo.testCases.loginTest.EdgeLoginTest"/>
-            <class name="sauceDemo.testCases.loginTest.FirefoxLoginTest"/>
-        </classes>
+        <packages>
+            <package name="sauceDemo.testCases.loginTest"/>
+        </packages>
     </test>
 
     <test thread-count="3" name="logoutTest">
-        <classes>
-            <class name="sauceDemo.testCases.logoutTest.ChromeLogoutTest"/>
-            <class name="sauceDemo.testCases.logoutTest.FirefoxLogoutTest"/>
-            <class name="sauceDemo.testCases.logoutTest.EdgeLogoutTest"/>
-        </classes>
+        <packages>
+            <package name="sauceDemo.testCases.logoutTest"/>
+        </packages>
     </test>
+
+    <test thread-count="3" name="productSortTest">
+        <packages>
+            <package name="sauceDemo.testCases.productSortTest"/>
+        </packages>
+    </test>
+
 </suite>
