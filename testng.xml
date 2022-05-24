@@ -4,7 +4,7 @@
 
     <test thread-count="3" name="errorMessageTest">
         <packages>
-            <package name="sauceDemo.testCases.errorMessageTest"></package>
+            <package name="sauceDemo.testCases.errorMessageTest"/>
         </packages>
     </test>
 
