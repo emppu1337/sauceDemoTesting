@@ -64,8 +64,8 @@ public class InventoryPage {
     }
 
     public void logout() {
-        pressMenuButton();
-        pressLogoutItem();
+        pressButton(menuButton);
+        pressButton(logoutItem);
     }
 
     public void sortPriceHiLo() {
