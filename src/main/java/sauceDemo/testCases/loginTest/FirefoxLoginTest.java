@@ -20,34 +20,37 @@ public class FirefoxLoginTest {
         this.driver = setup.firefoxSetup();
         this.testExecution = new TestCasesLoginTest();
     }
-
     @AfterClass
     public void tearDown() {
         TearDown.tearDown(driver);
     }
-
     @AfterMethod
     public void removeLoginCookies() {
         testExecution.deleteLoginCookies(driver);
     }
-
     @Test
     public void noAccessWithoutLogin() {
         testExecution.noAccessToInventoryWithoutLogin(driver);
     }
-
     @Test
     public void validLoginMustLandOnInventoryPage() {
         testExecution.loginMustLandOnInventoryPage(driver);
     }
-
     @Test
     public void validLoginGivesAccessToInventory() {
         testExecution.validLoginMustGiveAccessToInventory(driver);
     }
-
     @Test
     public void lockedOutUserMustHaveNoAccess() {
         testExecution.lockedOutUserMustHaveNoAccess(driver);
     }
+    @Test
+    public void onlyOneLoginAllowedAtATime() {testExecution.onlyOneLoginAllowedAtOnce(driver);
+    }
+    @Test
+    public void invalidUsernameMustNotHaveAccessToInventory() {testExecution.invalidUsernameMustNotGiveAccessToInventory(driver);}
+    @Test
+    public void invalidPasswordMustNotGiveAccessToInventory() {testExecution.invalidPasswordMustNotGiveAccessToInventory(driver);}
+
+
 }

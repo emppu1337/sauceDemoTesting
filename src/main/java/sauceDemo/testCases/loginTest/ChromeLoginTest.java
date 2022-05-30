@@ -46,4 +46,11 @@ public class ChromeLoginTest {
     public void lockedOutUserMustHaveNoAccess() {
         testExecution.lockedOutUserMustHaveNoAccess(driver);
     }
+    @Test
+    public void onlyOneLoginAllowedAtATime() {testExecution.onlyOneLoginAllowedAtOnce(driver);
+    }
+    @Test
+    public void invalidUsernameMustNotHaveAccessToInventory() {testExecution.invalidUsernameMustNotGiveAccessToInventory(driver);}
+    @Test
+    public void invalidPasswordMustNotGiveAccessToInventory() {testExecution.invalidPasswordMustNotGiveAccessToInventory(driver);}
 }

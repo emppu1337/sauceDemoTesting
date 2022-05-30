@@ -6,6 +6,18 @@ import sauceDemo.pages.LoginPage;
 
 public class TestCasesErrorMessageTest {
 
+    /*
+    Error message container on the login page is always visible (as an element).
+    If content is shown value in attribute "class" for the error-message-container ends with " error".
+    Test uses this attribute to assert that valid error message is shown in different scenarios of failed
+    login attempt or failed access attempt.
+    First it is asserted that error message is not visible before any of these attempts.
+    Content of error-message-container is compared to expected error message and container is closed, after which
+    it is asserted that error message is no visible.
+    */
+
+    // TODO: 30/05/2022 read expected error messages from a JSON or move them to Loginpage class and access them with getters
+
     LoginPage loginpage;
     private String expectedErrorMessage;
 

@@ -7,6 +7,11 @@ import sauceDemo.pages.LoginPage;
 
 public class TestCasesLogoutTest {
 
+    /*
+    Asserts that login cookie is deleted after user logs out with the logout button at the inventory page
+    and that user has no access to inventory after logout.
+    */
+
     InventoryPage inventoryPage;
     LoginPage loginPage;
 
