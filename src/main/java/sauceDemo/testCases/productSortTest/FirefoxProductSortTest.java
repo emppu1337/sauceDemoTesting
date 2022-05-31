@@ -31,6 +31,4 @@ public class FirefoxProductSortTest {
     public void mustSortByNameZtoA() {
         testExecution.assertSortingZToA(driver);
     }
-
-
 }

@@ -35,5 +35,4 @@ public class FirefoxLogoutTest {
     public void mustHaveNoAccessToInventoryAfterLogout() {
         testExecution.noAccessToInventoryAfterLogout(driver);
     }
-
 }

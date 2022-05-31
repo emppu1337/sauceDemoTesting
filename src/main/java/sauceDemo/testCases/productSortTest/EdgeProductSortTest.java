@@ -31,6 +31,4 @@ public class EdgeProductSortTest {
     public void mustSortByNameZtoA() {
         testExecution.assertSortingZToA(driver);
     }
-
-
 }

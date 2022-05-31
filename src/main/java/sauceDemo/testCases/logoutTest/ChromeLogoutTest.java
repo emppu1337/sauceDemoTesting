@@ -35,5 +35,4 @@ public class ChromeLogoutTest {
     public void mustHaveNoAccessToInventoryAfterLogout() {
         testExecution.noAccessToInventoryAfterLogout(driver);
     }
-
 }

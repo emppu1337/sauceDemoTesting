@@ -35,5 +35,4 @@ public class EdgeLogoutTest {
     public void mustHaveNoAccessToInventoryAfterLogout() {
         testExecution.noAccessToInventoryAfterLogout(driver);
     }
-
 }
